@@ -4,6 +4,8 @@ package xgrpcd;
 
 option go_package="./hellopb";
 
+import "google/api/annotations.proto"; // 支持http的时候，需要增加注解的功能，需要这个东西来进行解析
+
 //请求
 message UserRq {
 	int32 id = 1;
@@ -16,5 +18,13 @@ message UserRp {
 
 //服务
 service Data {
-	rpc GetUser(UserRq) returns (UserRp);
+	rpc GetUser(UserRq) returns (UserRp){
+		option (google.api.http) = {        // 声明http的定义方式！！
+			get: "/name/zhenxingsun"
+			// body: "*"                     // get方法的时候，不能有body字段 
+		};
+	}
 }
+
+
+
