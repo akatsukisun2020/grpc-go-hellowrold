@@ -41,7 +41,7 @@ func main() {
 		}
 	}()
 
-	// 2. 启动http服务
+	// 2. 启动http服务 // 徐炜棂
 	conn, err := grpc.Dial("localhost:50051", grpc.WithInsecure())
 	if err != nil {
 		log.Fatalln("failed to dial server:", err)
